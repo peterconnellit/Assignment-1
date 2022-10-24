@@ -1,33 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/script.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1f2f29a838.js" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    
     <title>News API</title>
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to the News API</h1>
-        <nav>
-            <ul>
-                <li>Options</li>
-                <li>Search</li>
-            </ul>
-        </nav>
+    <section class="hero">
+       
+        <header>
+            
+            <nav>
+                <img class="logo" src="images/logo.jpg" alt="News API logo" />
+                <ul id="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#search">Search</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </header>
 
-    </header>
+        <div class="hero-area">
+            <div class="hero-text">
+                <h1>The News API</h1>
+                <h2>All Your News, In One Place</h2>
+                <div class="button"><a href="#about" name="about">About</a></div>
+            </div>
+        </div>
+    </section>
 
+    <!--
     <main>
+        <section class="sub-section" id="about">
+            <article class="information">
+                <h2>Welcome to the news API</h2>
+                <h3 class="headline">All Your News,<span class="tagline"> In One Place.</span></h3>
+                <div class="">
+                    <p class="punchline">Please feel free to look through our Trending, Recent and Quirky news.</p>
+                    <p class="punchline">Alternatively, you can search for a particular topic by using the search bar.
+                    </p>
+                    <p class="punchline">We hope you will find an interesting read. Thanks for using the News API!!!</p>
+                </div>
+            </article>
+            <div class="coral-container">
+                <img class="coral" src="images/coral.jpg" alt="coral logo" />
+            </div>
+        </section>
+        <hr>
 
+       
+        <section class="sub-section-alternative" id="articles">
+            <h3>Articles</h3>
+            <div class="article-container">
+                <div class="article-card">
+                    <img class="article-image" src="mages/coral.jpg" alt="Trending news" />
+                    <h4>Trending</h4>
+                </div>
+                <div class="article-card">
+                    <img class="article-image" src="mages/coral.jpg" alt="Recent news" />
+                    <h4>Recent</h4>
+                </div>
+                <div class="article-card">
+                    <img class="article-image" src="mages/coral.jpg" alt="Quirky news" />
+                    <h4>Quirky</h4>
+                </div>
+                <div class="article-card">
+                    <img class="article-image" src="mages/coral.jpg" alt="Other news" />
+                    <h4>Other</h4>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="search-section" id="search">
+            <h2 class="section-title">Search for News</h2>
+            <div class="search__container bd-grid">
+                <fieldset>
+                    <legend>Search for News</legend>
+                    <label for="searchBox">
+                        <p>Search for News</p>
+                    </label>
+                    <input type="text" name="search" class="search-input" id="searchBox">
+                    <input type="submit" class="search-button" value="Search">
+                </fieldset>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <a href="#">Back to Top</a>
-
+        <a href="#" class="top-button">Back to Top</a>
     </footer>
+
+    -->
+    <script src="js/hamburger.js"></script>
+    <script src="js/scroll.js"></script>
     
 </body>
+
 </html>

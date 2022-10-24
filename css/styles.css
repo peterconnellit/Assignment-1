@@ -22,15 +22,6 @@ h3 {
     font-size: 30px;
 }
 
-a{
-    color: white;
-    text-decoration: none;
-}
-
-a:hover{
-    color: coral;
-}
-
 .logo {
     height: 80px;
     margin: 30px;
@@ -60,6 +51,10 @@ li:hover {
     scale: 115%;
 }
 
+.link:hover{
+    color: coral;
+}
+
 .hero {
     background-color: #1c1d25;
     height: 100vh;
@@ -79,24 +74,22 @@ li:hover {
     margin-bottom: 200px;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .button {
     width: 200px;
-    height: 55px;
     border-radius: 30px;
     background-color: #DB3A00;
     text-align:center;
     font-size: 30px;
     font-weight: 300;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-top: 5%;    
-    transition:scale 0.5s;     
-}
-
-.button a {
-    display: block;
-    width: 100%;
-    line-height: 55px;
+    transition: 0.5s;
 }
 
 .button:hover {
@@ -212,7 +205,6 @@ legend {
     background-color: rgb(102, 101, 101);
     cursor: pointer;
     transition: 0.5s;
-      
 }
 
 .search-button:hover {
@@ -258,8 +250,8 @@ footer {
 }
 
 hr {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .hamburger {
@@ -270,13 +262,16 @@ hr {
     outline: 0;
 }
 
+.hero-button:hover{
+    color: white;
+}
+
 /* Desktop */
 @media only screen and (max-width: 1000px) {
     .article-container {
         display: flex;
         flex-wrap: wrap;
     }
-
 }
 
 /* Nav for Mobile */
@@ -298,6 +293,7 @@ hr {
     }
     
     ul.show {
+        max-width: fit-content;
         display: block;
     }
     
@@ -309,6 +305,15 @@ hr {
     
     .logo {
         display: none;
+    }
+
+    .hero {
+        height: inherit;
+    }
+
+    .hero-area{
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 
     .hero-text {
@@ -326,6 +331,5 @@ hr {
         margin-right: auto;
         width: 50%;
     }
-   
 
 }

@@ -9,27 +9,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"rel="stylesheet">
     <script src="https://kit.fontawesome.com/1f2f29a838.js" crossorigin="anonymous"></script>
-
     <script src="https://unpkg.com/scrollreveal@4"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
-    
-    
     <title>News API</title>
 </head>
 
 <body>
     <section class="hero">
-       
         <header>
-            
             <nav>
                 <img class="logo" src="images/logo.jpg" alt="News API logo" />
                 <ul id="nav-list">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#articles">Articles</a></li>
-                    <li><a href="#search">Search</a></li>
+                    <li><a href="#about" class="link">About</a></li>
+                    <li><a href="#articles" class="link">Articles</a></li>
+                    <li><a href="#search" class="link">Search</a></li>
                 </ul>
-                <button class="hamburger" id="hamburger">
+                <button class="hamburger" id="hamburger" aria-label="Open the menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
@@ -39,7 +34,7 @@
             <div class="hero-text">
                 <h1>The News API</h1>
                 <h2>All Your News, In One Place</h2>
-                <div class="button"><a href="#about" name="about">About</a></div>
+                <div class="button"><a href="#about" name="about" id="hero-button">About</a></div>
             </div>
         </div>
     </section>
@@ -63,7 +58,6 @@
         </section>
         <hr>
 
-       
         <section class="sub-section-alternative" id="articles">
             <h3>Articles</h3>
             <div class="article-container">
@@ -86,7 +80,6 @@
             </div>
         </section>
 
-        
         <section class="search-section" id="search">
             <h2 class="section-title">Search for News</h2>
             <div class="search__container bd-grid">
@@ -99,18 +92,17 @@
                     <input type="submit" class="search-button" value="Search">
                 </fieldset>
             </div>
+            <article class="search-results">
+                <!--results here-->
+            </article>
         </section>
     </main>
 
-    
     <footer>
-        <a href="#" class="top-button">Back to Top</a>
+        <a href="#" class="link top-button">Back to Top</a>
     </footer>
 
-    
     <script src="js/hamburger.js"></script>
     <script src="js/scroll.js"></script>
-    
 </body>
-
 </html>

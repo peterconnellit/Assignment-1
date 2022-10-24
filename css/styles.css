@@ -280,7 +280,7 @@ hr {
 }
 
 /* Nav for Mobile */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 600px) {
     .hamburger {
         display: block;
         border: 0;
@@ -294,12 +294,11 @@ hr {
     ul {
         display: none;
         background-color: #2b2c38;
-        margin: 0px;
+        padding-left: 60px;
     }
     
     ul.show {
         display: block;
-        transition: 0.5s;
     }
     
     nav {
@@ -311,5 +310,23 @@ hr {
     .logo {
         display: none;
     }
+
+    .hero-text {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    .sub-section {
+        display: block;
+    }
+    
+    .coral {
+       
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+   
 
 }

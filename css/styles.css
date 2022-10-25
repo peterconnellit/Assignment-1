@@ -262,9 +262,23 @@ hr {
     outline: 0;
 }
 
-.hero-button:hover{
+.hero-button:hover {
     color: white;
 }
+
+
+.container {
+    background-color: #1c1d25;
+    color: #1c1d25;
+    font-size: 12px;
+}
+
+li{
+    color: #2b2c38;
+}
+
+
+
 
 /* Desktop */
 @media only screen and (max-width: 1000px) {

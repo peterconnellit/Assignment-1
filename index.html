@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"rel="stylesheet">
     <script src="https://kit.fontawesome.com/1f2f29a838.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/scrollreveal@4"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="js/search.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>    
     <title>News API</title>
 </head>
 
@@ -23,7 +23,7 @@
                 <ul id="nav-list">
                     <li><a href="#about" class="link">About</a></li>
                     <li><a href="#articles" class="link">Articles</a></li>
-                    <li><a href="#search" class="link">Search</a></li>
+                    <li><a href="#search-bar" class="link">Search</a></li>
                 </ul>
                 <button class="hamburger" id="hamburger" aria-label="Open the menu">
                     <i class="fas fa-bars"></i>
@@ -63,25 +63,25 @@
             <h3>Articles</h3>
             <div class="article-container">
                 <div class="article-card">
-                    <img class="article-image" src="mages/coral.jpg" alt="Trending news" />
+                    <img class="article-image" src="images/coral.jpg" alt="Trending news" />
                     <h4>Trending</h4>
                 </div>
                 <div class="article-card">
-                    <img class="article-image" src="mages/coral.jpg" alt="Recent news" />
+                    <img class="article-image" src="images/coral.jpg" alt="Recent news" />
                     <h4>Recent</h4>
                 </div>
                 <div class="article-card">
-                    <img class="article-image" src="mages/coral.jpg" alt="Quirky news" />
+                    <img class="article-image" src="images/coral.jpg" alt="Quirky news" />
                     <h4>Quirky</h4>
                 </div>
                 <div class="article-card">
-                    <img class="article-image" src="mages/coral.jpg" alt="Other news" />
+                    <img class="article-image" src="images/coral.jpg" alt="Other news" />
                     <h4>Other</h4>
                 </div>
             </div>
         </section>
 
-        <section class="search-section" id="search">
+        <section class="search-section" id="search-bar">
             <h2 class="section-title">Search for News</h2>
             <div class="search__container bd-grid">
                 <fieldset>
@@ -89,8 +89,8 @@
                     <label for="searchBox">
                         <p>Search for News</p>
                     </label>
-                    <input type="text" name="search" class="search-input" id="searchBox">
-                    <input type="submit" class="search-button" value="Search">
+                    <input type="text" name="searc" class="search-input" id="searchBox">
+                    <input type="submit" class="search-button" value="Searc">
                 </fieldset>
             </div>
             <article class="search-results">
@@ -102,19 +102,18 @@
     <footer>
         <a href="#" class="link top-button">Back to Top</a>
 
-        <form class="search" action="">
-            <label for="News"></label>
-            <input class="input" type="text"/>
-            <input type="submit"/>
+        <form class="search-form" id="search-form" action="">
+            <input class="input" type="text" />
+            <input type="submit" />
         </form>
-
+    
         <div class="container">
-            <ul class="class-list"></ul>
-
+            <ul class="news-list"></ul>
         </div>
 
     </footer>
-
+ 
+    
     <script src="js/hamburger.js"></script>
     <script src="js/scroll.js"></script>
 </body>

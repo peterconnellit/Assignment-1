@@ -30,7 +30,7 @@ window.onload=function(){
                 let topic = input.value;
     
                 //Fetch data from API
-                let url = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}`
+                let url = `https://newsapi.org/v2/everything?q=${topic}&pageSize=10&apiKey=${apiKey}`
     
                 //Built in fetch API
                 fetch(url).then((res) => {

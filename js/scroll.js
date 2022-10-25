@@ -1,7 +1,7 @@
 //Scroll Navigation
 const sr = ScrollReveal({
     origin: 'bottom',
-    distance: '100px',
+    distance: '50px',
     duration: 2000,
     reset: true
 })
@@ -22,5 +22,4 @@ ScrollReveal().reveal('.punchline', { delay: 3500,interval: 1000 })
 sr.reveal('.article-card',{ interval: 200 })
 
 //Contact
-sr.reveal('.search-input',{ interval: 200 })
 sr.reveal('.search-button',{})

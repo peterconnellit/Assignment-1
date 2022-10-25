@@ -30,7 +30,6 @@
                 </button>
             </nav>
         </header>
-
         <div class="hero-area">
             <div class="hero-text">
                 <h1>The News API</h1>
@@ -40,7 +39,6 @@
         </div>
     </section>
 
-    
     <main>
         <section class="sub-section" id="about">
             <article class="information">
@@ -58,21 +56,20 @@
             </div>
         </section>
         <hr>
-
         <section class="sub-section-alternative" id="articles">
             <h3>Articles</h3>
             <div class="article-container">
                 <div class="article-card">
                     <img class="article-image" src="images/coral.jpg" alt="Trending news" />
-                    <h4>Trending</h4>
+                    <h4>Most Recent</h4>
                 </div>
                 <div class="article-card">
                     <img class="article-image" src="images/coral.jpg" alt="Recent news" />
-                    <h4>Recent</h4>
+                    <h4>Most Popular</h4>
                 </div>
                 <div class="article-card">
                     <img class="article-image" src="images/coral.jpg" alt="Quirky news" />
-                    <h4>Quirky</h4>
+                    <h4>Tech</h4>
                 </div>
                 <div class="article-card">
                     <img class="article-image" src="images/coral.jpg" alt="Other news" />
@@ -80,7 +77,6 @@
                 </div>
             </div>
         </section>
-
         <section class="search-section" id="search-bar">
             <h2 class="section-title">Search for News</h2>
             <div class="search__container bd-grid">
@@ -89,28 +85,20 @@
                     <label for="searchBox">
                         <p>Search for News</p>
                     </label>
-                    <input type="text" name="searc" class="search-input" id="searchBox">
-                    <input type="submit" class="search-button" value="Searc">
+                    <form class="search-form" id="search-form" action="">
+                        <input class="input" type="text"  id="searchBox" />
+                        <input type="submit" class="search-button"/>
+                    </form>                   
                 </fieldset>
             </div>
-            <article class="search-results">
-                <!--results here-->
+            <article class="container">
+                <ul class="news-list"></ul>
             </article>
         </section>
     </main>
 
     <footer>
         <a href="#" class="link top-button">Back to Top</a>
-
-        <form class="search-form" id="search-form" action="">
-            <input class="input" type="text" />
-            <input type="submit" />
-        </form>
-    
-        <div class="container">
-            <ul class="news-list"></ul>
-        </div>
-
     </footer>
  
     

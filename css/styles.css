@@ -163,6 +163,7 @@ section {
     padding-top: 1px;
     padding-left: 80px;
     padding-right: 80px;
+    padding-bottom: 40px;
 }
 
 .section-title {    
@@ -179,7 +180,7 @@ legend {
     padding: 0;
 }
 
-.search-input {
+.input {
     font-family: 'Poppins', sans-serif;     
     width: 60%;    
     padding: 1%;
@@ -266,15 +267,18 @@ hr {
     color: white;
 }
 
-
 .container {
     background-color: #1c1d25;
-    color: #1c1d25;
-    font-size: 12px;
+    display: block;
+    max-width: 80%;
+    align-content: center;
+    display: inline-block;
 }
 
-li{
-    color: #2b2c38;
+
+
+.news-list {
+    display: contents;
 }
 
 
@@ -346,4 +350,24 @@ li{
         width: 50%;
     }
 
+    .search-section {
+        padding-left: 5px;
+        padding-right: 5px;
+        justify-content: space-around;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    ul {
+        font-size: smaller;
+        max-width: 70%;
+    }
+
+    .container {
+        max-width: 70%;
+        align-content: center;
+        display: inline-block;
+    }
 }

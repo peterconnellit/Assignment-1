@@ -23,6 +23,10 @@ h3 {
     font-size: 30px;
 }
 
+h4 {
+    margin: 0px;
+}
+
 .logo {
     height: 80px;
     margin: 30px;
@@ -76,6 +80,16 @@ li:hover {
 }
 
 a {
+    color: coral;
+    text-decoration: none;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+a#hero-button {
     color: white;
     text-decoration: none;
 }
@@ -131,11 +145,6 @@ section {
     align-items: center;
 }
 
-.subtext {
-    font-size: 15px;
-    font-weight: 300;
-}
-
 .sub-section-alternative {
     display: flex;
     flex-direction: column;
@@ -157,6 +166,18 @@ section {
     margin: 10px;
 }
 
+.article-image {
+    margin-top: 25px;
+    width: 250px;
+    border-radius: 125px;
+}
+
+.icon {
+    color: coral;
+    font-size: 100px;
+    padding: 10px;
+}
+
 .search-section {    
     background-color: #1c1d25;
     color: white;
@@ -169,6 +190,10 @@ section {
 
 .section-title {    
     margin-top: 3%;
+}
+
+.search-title {
+    font-size: x-large;
 }
 
 fieldset {
@@ -245,12 +270,6 @@ footer {
     color: #808080;
 }
 
-.article-image {
-    margin-top: 25px;
-    width: 250px;
-    border-radius: 125px;
-}
-
 hr {
     margin-left: 20%;
     margin-right: 20%;
@@ -276,14 +295,9 @@ hr {
     display: inline-block;
 }
 
-
-
 .news-list {
     display: contents;
 }
-
-
-
 
 /* Desktop */
 @media only screen and (max-width: 1000px) {

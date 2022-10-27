@@ -7,7 +7,10 @@ const newsDetails = document.getElementById("news-details");
 
 const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
 
-let url = `https://newsapi.org/v2/everything?q=tech&pageSize=10&apiKey=${apiKey}`
+//let url = `https://newsapi.org/v2/everything?q=tech&pageSize=4&apiKey=${apiKey}`
+
+let url = `https://newsapi.org/v2/top-headlines?country=gb&pageSize=3&apiKey=${apiKey}`
+
 
    //Built in fetch API
    fetch(url).then((res) => {

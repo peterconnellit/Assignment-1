@@ -1,3 +1,56 @@
+//Navigation switching for mobile
+const hamburgerButton = document.getElementById('hamburger')
+const navList = document.getElementById('nav-list')
+
+function toggleButton() {
+    navList.classList.toggle('show')
+}
+
+hamburgerButton.addEventListener('click', toggleButton)
+
+
+//Scroll Navigation
+const sr = ScrollReveal({
+    origin: 'bottom',
+    distance: '50px',
+    duration: 2000,
+    reset: true
+})
+
+//Main Page
+sr.reveal('.logo',{})
+sr.reveal('.hero-text',{ delay: 100 })
+sr.reveal('.button',{ delay: 300 })
+
+//About Me
+sr.reveal('.information',{})
+sr.reveal('.coral',{ delay: 100 })
+ScrollReveal().reveal('.headline', { delay: 500 })
+ScrollReveal().reveal('.tagline', { delay: 2000 })
+ScrollReveal().reveal('.punchline', { delay: 3500,interval: 1000 })
+
+//Projects
+sr.reveal('.article-card',{ interval: 200 })
+
+//Contact
+sr.reveal('.search-button',{})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Would recommend storing in an environmental variable from user.
 For demonstration purposes*/
 const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
@@ -11,7 +64,7 @@ const newsdetails = document.getElementById("tech-details");
 var newsDataArr = [];
 
 // apis
-const API_KEY = "93fa9c4c03804d35b9a4178db6eb4808";
+
 const TECHNOLOGY_NEWS =
   "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
 
@@ -114,7 +167,7 @@ window.onload = function () {
 };
 
 const fetchTechnologyNews = async () => {
-  const response = await fetch(TECHNOLOGY_NEWS + API_KEY);
+  const response = await fetch(TECHNOLOGY_NEWS + apiKey);
   newsDataArr = [];
   if (response.status >= 200 && response.status < 300) {
     const myJson = await response.json();

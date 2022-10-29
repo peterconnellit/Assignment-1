@@ -46,7 +46,7 @@
                 <h2>Welcome to the news API</h2>
                 <h3 class="headline">All Your News,<span class="tagline"> In One Place.</span></h3>
                 <div class="">
-                    <p class="punchline">Please feel free to look through our Trending, Recent and Quirky news.</p>
+                    <p class="punchline">Please feel free to look through our Trending, Gaming, Tech and Business news.</p>
                     <p class="punchline">Alternatively, you can search for a particular topic by using the search bar.
                     </p>
                     <p class="punchline">We hope you will find an interesting read. Thanks for using the News API!!!</p>
@@ -60,31 +60,42 @@
         <!--Articles section of page-->
         <section class="sub-section-alternative" id="articles">
             <h3>Articles</h3>
-            <div class="article-container">
+            <div class="article-container">               
                 <div class="article-card">
-                    <i class="fa-solid fa-calendar-days icon"></i>                   
-                    <h4>Most Recent</h4>
+                    <i class="fa-solid fa-fire icon"></i>
+                    <h4>UK Trending</h4>
+                    <hr>
+                    <div>
+                        <div id="trending-news"></div>
+                        <div id="trending-details"></div>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <i class="fa-solid fa-gamepad icon"></i>                 
+                    <h4>Gaming</h4>
+                    <hr>
+                    <div>
+                        <div id="gaming-news"></div>
+                        <div id="gaming-details"></div>
+                    </div>
+                </div> 
+                <div class="article-card"> 
+                    <i class="fa-solid fa-laptop-code icon"></i>                
+                    <h4>Tech</h4>
                     <hr>
                     <div>
                         <div id="tech-news"></div>
                         <div id="tech-details"></div>
                     </div>
-                </div>                
-                <div class="article-card">
-                    <i class="fa-solid fa-fire icon"></i>
-                    <h4>Most Popular</h4>
-                    <hr>
-                </div>
-                <div class="article-card"> 
-                    <i class="fa-solid fa-laptop-code icon"></i>                
-                    <h4>Tech</h4>
-                    <hr>
                 </div>
                 <div class="article-card">
-                    <i class="fa-solid fa-newspaper icon"></i>             
-                    <h4>Other</h4>
+                    <i class="fa-solid fa-chart-line icon"></i>     
+                    <h4>Business</h4>
                     <hr>
-                    <div id="news-details"></div>
+                    <div>
+                        <div id="business-news"></div>
+                        <div id="business-details"></div>
+                    </div>
                 </div>
             </div>
         </section>

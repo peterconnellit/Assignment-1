@@ -123,7 +123,7 @@ var newsDataArr = [];
 
 //gaming news api endpoint
 const GAMING_NEWS =
-  "https://newsapi.org/v2/everything?q=gaming&language=en&sortBy=popularity&pageSize=2&apiKey=";
+  "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
 
   //JavaScript Ajax fetch api function
   const fetchGamingNews = async () => {
@@ -388,6 +388,7 @@ window.onload = function () {
         data.articles.forEach((article) => {
           let li = document.createElement("li");
           let a = document.createElement("a");
+          a.className = "result-links";
           //Set list a tag attribute to URL
           a.setAttribute("href", article.url);
           //Prevent page from directing user away

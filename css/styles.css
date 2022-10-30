@@ -8,6 +8,10 @@ html {
     scroll-behavior: smooth;
 }
 
+html.sr .load-hidden {
+    visibility: hidden;
+}
+
 h1 {
     font-size: 60px;
     margin: 0;

@@ -1,21 +1,13 @@
-//Navigation switching for mobile responsiveness
-const hamburgerButton = document.getElementById('hamburger')
-const navList = document.getElementById('nav-list')
-
-//Wnen called, show hamburger nav menu
-function toggleButton() {
-    navList.classList.toggle('show')
-}
-
-//Event listener to call Nav function upon user click
-hamburgerButton.addEventListener('click', toggleButton)
+/*Would recommend storing in an environmental variable from user.
+For demonstration purposes*/
+const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
 
 //Scroll animation
 const sr = ScrollReveal({
-    origin: 'bottom',
-    distance: '50px',
-    duration: 2000,
-    reset: true
+  origin: 'bottom',
+  distance: '50px',
+  duration: 2000,
+  reset: true
 })
 
 //Main Page
@@ -27,8 +19,8 @@ sr.reveal('.button',{ delay: 300 })
 sr.reveal('.information',{})
 sr.reveal('.coral',{ delay: 100 })
 ScrollReveal().reveal('.headline', { delay: 500 })
-ScrollReveal().reveal('.tagline', { delay: 2000 })
-ScrollReveal().reveal('.punchline', { delay: 3500,interval: 1000 })
+ScrollReveal().reveal('.tagline', { delay: 1500 })
+ScrollReveal().reveal('.punchline', { delay: 2000, interval: 500 })
 
 //Articles
 sr.reveal('.article-card',{ interval: 200 })
@@ -36,84 +28,18 @@ sr.reveal('.article-card',{ interval: 200 })
 //Contact
 sr.reveal('.search-button',{})
 
-/*Would recommend storing in an environmental variable from user.
-For demonstration purposes*/
-const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
+//Navigation switching for mobile responsiveness
+const hamburgerButton = document.getElementById('hamburger')
+const navList = document.getElementById('nav-list')
 
-//Variables for gaming articles
-const gamingNews = document.getElementById("gaming-news");
-const gamingDetails = document.getElementById("gaming-details");
+//When called, show hamburger nav menu
+function toggleButton() {
+    navList.classList.toggle('show')
+}
 
-//Array to store json fetch response
-var newsDataArr = [];
+//Event listener to call Nav function upon user click
+hamburgerButton.addEventListener('click', toggleButton)
 
-//gaming news api endpoint
-const GAMING_NEWS =
-  "https://newsapi.org/v2/everything?q=gaming&language=en&sortBy=publishedAt&pageSize=2&apiKey=";
-
-  //JavaScript Ajax fetch api function
-  const fetchGamingNews = async () => {
-    //Promise & response
-    const response = await fetch(GAMING_NEWS + apiKey);
-    newsDataArr = [];
-
-    //If promise & response successful return json articles into array
-    if (response.status >= 200 && response.status < 300) {
-      const myJson = await response.json();
-      newsDataArr = myJson.articles;
-    } else {
-      //Handle errors with console log and text error
-      console.log(response.status, response.statusText);
-      gamingDetails.innerHTML = "<h5>No data found.</h5>";
-      return;
-    }
-    
-    //Call function
-    GamingNews();
-  };
-  
-  //function to create div elements with json data
-  function GamingNews() {
-    gamingDetails.innerHTML = "";
-  
-    // if(newsDataArr.length == 0) {
-    //     gamingDetails.innerHTML = "<h5>No data found.</h5>"
-    //     return;
-    // }
-  
-    newsDataArr.forEach((news) => {
-      //Declare variables to create div & date elements
-      var date = news.publishedAt.split("T");  
-      var col = document.createElement("div");  
-      var card = document.createElement("div");  
-      var cardBody = document.createElement("div");
-      
-      //News heading details
-      var newsHeading = document.createElement("p");
-      newsHeading.className = "card-title";
-      newsHeading.innerHTML = news.title;
-      
-      //News data details
-      var dateHeading = document.createElement("h5");
-      dateHeading.className = "text-primary";
-      dateHeading.innerHTML = date[0];
-      
-      //a href link to news websites
-      var link = document.createElement("a");
-      link.setAttribute("target", "_blank");
-      link.href = news.url;
-      link.innerHTML = "Read more";
-      
-      //Method to move data from its current position to the new position
-      cardBody.appendChild(newsHeading);
-      cardBody.appendChild(dateHeading);
-      cardBody.appendChild(link);
-      card.appendChild(cardBody);
-      col.appendChild(card);
-      gamingDetails.appendChild(col);
-    });
-  }
-  
 //Variables for trending articles
 const trendingNews = document.getElementById("trending-news");
 const trendingDetails = document.getElementById("trending-details");
@@ -176,7 +102,7 @@ const TRENDING_NEWS =
       var link = document.createElement("a");
       link.setAttribute("target", "_blank");
       link.href = news.url;
-      link.innerHTML = "Read more";
+      link.innerHTML = "View Here";
       
       //Method to move data from its current position to the new position
       cardBody.appendChild(newsHeading);
@@ -185,6 +111,80 @@ const TRENDING_NEWS =
       card.appendChild(cardBody);
       col.appendChild(card);
       trendingDetails.appendChild(col);
+    });
+  }
+
+//Variables for gaming articles
+const gamingNews = document.getElementById("gaming-news");
+const gamingDetails = document.getElementById("gaming-details");
+
+//Array to store json fetch response
+var newsDataArr = [];
+
+//gaming news api endpoint
+const GAMING_NEWS =
+  "https://newsapi.org/v2/everything?q=gaming&language=en&sortBy=popularity&pageSize=2&apiKey=";
+
+  //JavaScript Ajax fetch api function
+  const fetchGamingNews = async () => {
+    //Promise & response
+    const response = await fetch(GAMING_NEWS + apiKey);
+    newsDataArr = [];
+
+    //If promise & response successful return json articles into array
+    if (response.status >= 200 && response.status < 300) {
+      const myJson = await response.json();
+      newsDataArr = myJson.articles;
+    } else {
+      //Handle errors with console log and text error
+      console.log(response.status, response.statusText);
+      gamingDetails.innerHTML = "<h5>No data found.</h5>";
+      return;
+    }
+    
+    //Call function
+    GamingNews();
+  };
+  
+  //function to create div elements with json data
+  function GamingNews() {
+    gamingDetails.innerHTML = "";
+  
+    // if(newsDataArr.length == 0) {
+    //     gamingDetails.innerHTML = "<h5>No data found.</h5>"
+    //     return;
+    // }
+  
+    newsDataArr.forEach((news) => {
+      //Declare variables to create div & date elements
+      var date = news.publishedAt.split("T");  
+      var col = document.createElement("div");  
+      var card = document.createElement("div");  
+      var cardBody = document.createElement("div");
+      
+      //News heading details
+      var newsHeading = document.createElement("p");
+      newsHeading.className = "card-title";
+      newsHeading.innerHTML = news.title;
+      
+      //News data details
+      var dateHeading = document.createElement("h5");
+      dateHeading.className = "text-primary";
+      dateHeading.innerHTML = date[0];
+      
+      //a href link to news websites
+      var link = document.createElement("a");
+      link.setAttribute("target", "_blank");
+      link.href = news.url;
+      link.innerHTML = "View Here";
+      
+      //Method to move data from its current position to the new position
+      cardBody.appendChild(newsHeading);
+      cardBody.appendChild(dateHeading);
+      cardBody.appendChild(link);
+      card.appendChild(cardBody);
+      col.appendChild(card);
+      gamingDetails.appendChild(col);
     });
   }
   
@@ -250,7 +250,7 @@ const TECHNOLOGY_NEWS =
       var link = document.createElement("a");
       link.setAttribute("target", "_blank");
       link.href = news.url;
-      link.innerHTML = "Read more";
+      link.innerHTML = "View Here";
       
       //Method to move data from its current position to the new position
       cardBody.appendChild(newsHeading);
@@ -324,7 +324,7 @@ const BUSINESS_NEWS =
       var link = document.createElement("a");
       link.setAttribute("target", "_blank");
       link.href = news.url;
-      link.innerHTML = "Read more";
+      link.innerHTML = "View Here";
       
       //Method to move data from its current position to the new position
       cardBody.appendChild(newsHeading);

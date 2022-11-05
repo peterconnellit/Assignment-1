@@ -1,5 +1,5 @@
-/*Would recommend storing in an environmental variable from user.
-For demonstration purposes*/
+/*Only here For demonstration purposes.
+Would recommend securely storing API key in an environmental variable on server, hidden from users.*/
 const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
 
 //Scroll animation
@@ -34,7 +34,7 @@ const navList = document.getElementById('nav-list')
 
 //When called, show hamburger nav menu
 function toggleButton() {
-    navList.classList.toggle('show')
+  navList.classList.toggle('show')
 }
 
 //Event listener to call Nav function upon user click
@@ -45,306 +45,270 @@ const trendingNews = document.getElementById("trending-news");
 const trendingDetails = document.getElementById("trending-details");
 
 //Array to store json fetch response
-var newsDataArr = [];
+let newsDataArr = [];
 
 //trending news api endpoint
-const TRENDING_NEWS =
-  "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=";
+const TRENDING_NEWS = "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=";
 
-  //JavaScript Ajax fetch api function
-  const fetchTrendingNews = async () => {
-    //Promise & response
-    const response = await fetch(TRENDING_NEWS + apiKey);
-    newsDataArr = [];
-
-    //If promise & response successful return json articles into array
-    if (response.status >= 200 && response.status < 300) {
-      const myJson = await response.json();
-      newsDataArr = myJson.articles;
-    } else {
-      //Handle errors with console log and text error
-      console.log(response.status, response.statusText);
-      trendingDetails.innerHTML = "<h5>No data found.</h5>";
-      return;
-    }
-    
-    //Call function
-    TrendingNews();
-  };
+//JavaScript Ajax fetch api function
+const fetchTrendingNews = async () => {
+  //Promise & response
+  const response = await fetch(TRENDING_NEWS + apiKey);
   
-  //function to create div elements with json data
-  function TrendingNews() {
-    trendingDetails.innerHTML = "";
-  
-    // if(newsDataArr.length == 0) {
-    //     trendingDetails.innerHTML = "<h5>No data found.</h5>"
-    //     return;
-    // }
-  
-    newsDataArr.forEach((news) => {
-      //Declare variables to create div & date elements
-      var date = news.publishedAt.split("T");  
-      var col = document.createElement("div");  
-      var card = document.createElement("div");  
-      var cardBody = document.createElement("div");
-      
-      //News heading details
-      var newsHeading = document.createElement("p");
-      newsHeading.className = "card-title";
-      newsHeading.innerHTML = news.title;
-      
-      //News data details
-      var dateHeading = document.createElement("h5");
-      dateHeading.className = "text-primary";
-      dateHeading.innerHTML = date[0];
-      
-      //a href link to news websites
-      var link = document.createElement("a");
-      link.setAttribute("target", "_blank");
-      link.href = news.url;
-      link.innerHTML = "View Here";
-      
-      //Method to move data from its current position to the new position
-      cardBody.appendChild(newsHeading);
-      cardBody.appendChild(dateHeading);
-      cardBody.appendChild(link);
-      card.appendChild(cardBody);
-      col.appendChild(card);
-      trendingDetails.appendChild(col);
-    });
+  //If promise & response successful return json articles into array
+  if (response.status >= 200 && response.status < 300) {
+    const myJson = await response.json();
+    newsDataArr = myJson.articles;
+  } else {
+    //Handle errors with console log and text error
+    console.log(response.status, response.statusText);
+    trendingDetails.innerHTML = "<h5>No data found.</h5>";
+    return;
   }
+  
+  //Call function
+  TrendingNews();
+};
+  
+//function to create div elements with json data
+function TrendingNews() {
+  trendingDetails.innerHTML = "";
+
+  newsDataArr.forEach((news) => {
+    //Declare variables to create div & date elements
+    const date = news.publishedAt.split("T");  
+    const col = document.createElement("div");  
+    const card = document.createElement("div");  
+    const cardBody = document.createElement("div");
+    
+    //News heading details
+    const newsHeading = document.createElement("p");
+    newsHeading.className = "card-title";
+    newsHeading.innerHTML = news.title;
+    
+    //News data details
+    const dateHeading = document.createElement("h5");
+    dateHeading.className = "text-primary";
+    dateHeading.innerHTML = date[0];
+    
+    //a href link to news websites
+    const link = document.createElement("a");
+    link.setAttribute("target", "_blank");
+    link.href = news.url;
+    link.innerHTML = "View Here";
+    
+    //Method to move data from its current position to the new position
+    cardBody.appendChild(newsHeading);
+    cardBody.appendChild(dateHeading);
+    cardBody.appendChild(link);
+    card.appendChild(cardBody);
+    col.appendChild(card);
+    trendingDetails.appendChild(col);
+  });
+}
 
 //Variables for gaming articles
 const gamingNews = document.getElementById("gaming-news");
 const gamingDetails = document.getElementById("gaming-details");
 
-//Array to store json fetch response
-var newsDataArr = [];
-
 //gaming news api endpoint
-const GAMING_NEWS =
-  "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
+const GAMING_NEWS = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=3&apiKey=";
 
-  //JavaScript Ajax fetch api function
-  const fetchGamingNews = async () => {
-    //Promise & response
-    const response = await fetch(GAMING_NEWS + apiKey);
-    newsDataArr = [];
-
-    //If promise & response successful return json articles into array
-    if (response.status >= 200 && response.status < 300) {
-      const myJson = await response.json();
-      newsDataArr = myJson.articles;
-    } else {
-      //Handle errors with console log and text error
-      console.log(response.status, response.statusText);
-      gamingDetails.innerHTML = "<h5>No data found.</h5>";
-      return;
-    }
-    
-    //Call function
-    GamingNews();
-  };
+//JavaScript Ajax fetch api function
+const fetchGamingNews = async () => {
+  //Promise & response
+  const response = await fetch(GAMING_NEWS + apiKey);
   
-  //function to create div elements with json data
-  function GamingNews() {
-    gamingDetails.innerHTML = "";
-  
-    // if(newsDataArr.length == 0) {
-    //     gamingDetails.innerHTML = "<h5>No data found.</h5>"
-    //     return;
-    // }
-  
-    newsDataArr.forEach((news) => {
-      //Declare variables to create div & date elements
-      var date = news.publishedAt.split("T");  
-      var col = document.createElement("div");  
-      var card = document.createElement("div");  
-      var cardBody = document.createElement("div");
-      
-      //News heading details
-      var newsHeading = document.createElement("p");
-      newsHeading.className = "card-title";
-      newsHeading.innerHTML = news.title;
-      
-      //News data details
-      var dateHeading = document.createElement("h5");
-      dateHeading.className = "text-primary";
-      dateHeading.innerHTML = date[0];
-      
-      //a href link to news websites
-      var link = document.createElement("a");
-      link.setAttribute("target", "_blank");
-      link.href = news.url;
-      link.innerHTML = "View Here";
-      
-      //Method to move data from its current position to the new position
-      cardBody.appendChild(newsHeading);
-      cardBody.appendChild(dateHeading);
-      cardBody.appendChild(link);
-      card.appendChild(cardBody);
-      col.appendChild(card);
-      gamingDetails.appendChild(col);
-    });
+  //If promise & response successful return json articles into array
+  if (response.status >= 200 && response.status < 300) {
+    const myJson = await response.json();
+    newsDataArr = myJson.articles;
+  } else {
+    //Handle errors with console log and text error
+    console.log(response.status, response.statusText);
+    gamingDetails.innerHTML = "<h5>No data found.</h5>";
+    return;
   }
+  
+  //Call function
+  GamingNews();
+};
+  
+//function to create div elements with json data
+function GamingNews() {
+  gamingDetails.innerHTML = "";
+
+  newsDataArr.forEach((news) => {
+    //Declare variables to create div & date elements
+    const date = news.publishedAt.split("T");  
+    const col = document.createElement("div");  
+    const card = document.createElement("div");  
+    const cardBody = document.createElement("div");
+    
+    //News heading details
+    const newsHeading = document.createElement("p");
+    newsHeading.className = "card-title";
+    newsHeading.innerHTML = news.title;
+    
+    //News data details
+    const dateHeading = document.createElement("h5");
+    dateHeading.className = "text-primary";
+    dateHeading.innerHTML = date[0];
+    
+    //a href link to news websites
+    const link = document.createElement("a");
+    link.setAttribute("target", "_blank");
+    link.href = news.url;
+    link.innerHTML = "View Here";
+    
+    //Method to move data from its current position to the new position
+    cardBody.appendChild(newsHeading);
+    cardBody.appendChild(dateHeading);
+    cardBody.appendChild(link);
+    card.appendChild(cardBody);
+    col.appendChild(card);
+    gamingDetails.appendChild(col);
+  });
+}
   
 //Variables for tech articles
 const newsType = document.getElementById("tech-news");
 const techDetails = document.getElementById("tech-details");
 
-//Array to store json fetch response
-var newsDataArr = [];
-
 //Tech news api endpoint
-const TECHNOLOGY_NEWS =
-  "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
+const TECHNOLOGY_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
 
-  //JavaScript Ajax fetch api function
-  const fetchTechnologyNews = async () => {
-    //Promise & response
-    const response = await fetch(TECHNOLOGY_NEWS + apiKey);
-    newsDataArr = [];
-
-    //If promise & response successful return json articles into array
-    if (response.status >= 200 && response.status < 300) {
-      const myJson = await response.json();
-      newsDataArr = myJson.articles;
-    } else {
-      //Handle errors with console log and text error
-      console.log(response.status, response.statusText);
-      techDetails.innerHTML = "<h5>No data found.</h5>";
-      return;
-    }
-    
-    //Call function
-    techNews();
-  };
+//JavaScript Ajax fetch api function
+const fetchTechnologyNews = async () => {
+  //Promise & response
+  const response = await fetch(TECHNOLOGY_NEWS + apiKey);
   
-  //function to create div elements with json data
-  function techNews() {
-    techDetails.innerHTML = "";
-  
-    // if(newsDataArr.length == 0) {
-    //     techDetails.innerHTML = "<h5>No data found.</h5>"
-    //     return;
-    // }
-  
-    newsDataArr.forEach((news) => {
-      //Declare variables to create div & date elements
-      var date = news.publishedAt.split("T");  
-      var col = document.createElement("div");  
-      var card = document.createElement("div");  
-      var cardBody = document.createElement("div");
-      
-      //News heading details
-      var newsHeading = document.createElement("p");
-      newsHeading.className = "card-title";
-      newsHeading.innerHTML = news.title;
-      
-      //News data details
-      var dateHeading = document.createElement("h5");
-      dateHeading.className = "text-primary";
-      dateHeading.innerHTML = date[0];
-      
-      //a href link to news websites
-      var link = document.createElement("a");
-      link.setAttribute("target", "_blank");
-      link.href = news.url;
-      link.innerHTML = "View Here";
-      
-      //Method to move data from its current position to the new position
-      cardBody.appendChild(newsHeading);
-      cardBody.appendChild(dateHeading);
-      cardBody.appendChild(link);
-      card.appendChild(cardBody);
-      col.appendChild(card);
-      techDetails.appendChild(col);
-    });
+  //If promise & response successful return json articles into array
+  if (response.status >= 200 && response.status < 300) {
+    const myJson = await response.json();
+    newsDataArr = myJson.articles;
+  } else {
+    //Handle errors with console log and text error
+    console.log(response.status, response.statusText);
+    techDetails.innerHTML = "<h5>No data found.</h5>";
+    return;
   }
+  
+  //Call function
+  techNews();
+};
+  
+//function to create div elements with json data
+function techNews() {
+  techDetails.innerHTML = "";
+
+  newsDataArr.forEach((news) => {
+    //Declare variables to create div & date elements
+    const date = news.publishedAt.split("T");  
+    const col = document.createElement("div");  
+    const card = document.createElement("div");  
+    const cardBody = document.createElement("div");
+    
+    //News heading details
+    const newsHeading = document.createElement("p");
+    newsHeading.className = "card-title";
+    newsHeading.innerHTML = news.title;
+    
+    //News data details
+    const dateHeading = document.createElement("h5");
+    dateHeading.className = "text-primary";
+    dateHeading.innerHTML = date[0];
+    
+    //a href link to news websites
+    const link = document.createElement("a");
+    link.setAttribute("target", "_blank");
+    link.href = news.url;
+    link.innerHTML = "View Here";
+    
+    //Method to move data from its current position to the new position
+    cardBody.appendChild(newsHeading);
+    cardBody.appendChild(dateHeading);
+    cardBody.appendChild(link);
+    card.appendChild(cardBody);
+    col.appendChild(card);
+    techDetails.appendChild(col);
+  });
+}
 
 //Variables for business articles
 const businessNews = document.getElementById("business-news");
 const businessDetails = document.getElementById("business-details");
 
-//Array to store json fetch response
-var newsDataArr = [];
-
 //Business news api endpoint
-const BUSINESS_NEWS =
-  "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
+const BUSINESS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
 
-  //JavaScript Ajax fetch api function
-  const fetchBusinessNews = async () => {
-    //Promise & response
-    const response = await fetch(BUSINESS_NEWS + apiKey);
-    newsDataArr = [];
+//JavaScript Ajax fetch api function
+const fetchBusinessNews = async () => {
+  //Promise & response
+  const response = await fetch(BUSINESS_NEWS + apiKey);
+  
 
-    //If promise & response successful return json articles into array
-    if (response.status >= 200 && response.status < 300) {
-      const myJson = await response.json();
-      newsDataArr = myJson.articles;
-    } else {
-      //Handle errors with console log and text error
-      console.log(response.status, response.statusText);
-      businessDetails.innerHTML = "<h5>No data found.</h5>";
-      return;
-    }
-    
-    //Call function
-    BusinessNews();
-  };
-  
-  //function to create div elements with json data
-  function BusinessNews() {
-    businessDetails.innerHTML = "";
-  
-    // if(newsDataArr.length == 0) {
-    //     techDetails.innerHTML = "<h5>No data found.</h5>"
-    //     return;
-    // }
-  
-    newsDataArr.forEach((news) => {
-      //Declare variables to create div & date elements
-      var date = news.publishedAt.split("T");  
-      var col = document.createElement("div");  
-      var card = document.createElement("div");  
-      var cardBody = document.createElement("div");
-      
-      //News heading details
-      var newsHeading = document.createElement("p");
-      newsHeading.className = "card-title";
-      newsHeading.innerHTML = news.title;
-      
-      //News data details
-      var dateHeading = document.createElement("h5");
-      dateHeading.className = "text-primary";
-      dateHeading.innerHTML = date[0];
-      
-      //a href link to news websites
-      var link = document.createElement("a");
-      link.setAttribute("target", "_blank");
-      link.href = news.url;
-      link.innerHTML = "View Here";
-      
-      //Method to move data from its current position to the new position
-      cardBody.appendChild(newsHeading);
-      cardBody.appendChild(dateHeading);
-      cardBody.appendChild(link);
-      card.appendChild(cardBody);
-      col.appendChild(card);
-      businessDetails.appendChild(col);
-    });
+  //If promise & response successful return json articles into array
+  if (response.status >= 200 && response.status < 300) {
+    const myJson = await response.json();
+    newsDataArr = myJson.articles;
+  } else {
+    //Handle errors with console log and text error
+    console.log(response.status, response.statusText);
+    businessDetails.innerHTML = "<h5>No data found.</h5>";
+    return;
   }
+  
+  //Call function
+  BusinessNews();
+};
+  
+//function to create div elements with json data
+function BusinessNews() {
+  businessDetails.innerHTML = "";
+
+  newsDataArr.forEach((news) => {
+    //Declare variables to create div & date elements
+    const date = news.publishedAt.split("T");  
+    const col = document.createElement("div");  
+    const card = document.createElement("div");  
+    const cardBody = document.createElement("div");
+    
+    //News heading details
+    const newsHeading = document.createElement("p");
+    newsHeading.className = "card-title";
+    newsHeading.innerHTML = news.title;
+    
+    //News data details
+    const dateHeading = document.createElement("h5");
+    dateHeading.className = "text-primary";
+    dateHeading.innerHTML = date[0];
+    
+    //a href link to news websites
+    const link = document.createElement("a");
+    link.setAttribute("target", "_blank");
+    link.href = news.url;
+    link.innerHTML = "View Here";
+    
+    //Method to move data from its current position to the new position
+    cardBody.appendChild(newsHeading);
+    cardBody.appendChild(dateHeading);
+    cardBody.appendChild(link);
+    card.appendChild(cardBody);
+    col.appendChild(card);
+    businessDetails.appendChild(col);
+  });
+}
   
 //Initiate on page load
 window.onload = function () {
   newsType.innerHTML = "";
-  fetchGamingNews();
+
   fetchTrendingNews();
+  fetchGamingNews();
   fetchTechnologyNews();
   fetchBusinessNews();
  
-
   //Declare selectors to retrieve user input and from form and append results to news list
   const searchFrom = document.querySelector(".search-form");
   const input = document.querySelector(".input");

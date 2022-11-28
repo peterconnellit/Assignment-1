@@ -369,6 +369,28 @@ window.onload = function () {
       .catch((error) => {
         console.log(error);
       });
+
+    /*Created a clone of the map higher order function for demonstration purposes.
+    Here we are extracting information to developer console.
+    Using an array of newsAPI urls, we can get all url lengths.
+    mapClone function takes both array and function as arguments and return url lengths*/
+    function mapClone(arr, fn) {
+      const urlList = [];
+      for(let i = 0; i < arr.length; i++) {
+        urlList.push(
+          fn(arr[i])
+        );
+      }
+      return urlList;
+    }
+    
+    const urls = [TRENDING_NEWS, GAMING_NEWS, TECHNOLOGY_NEWS, BUSINESS_NEWS, url];
+    const urlsLength = mapClone(urls, function(item) {
+      return item.length;
+    });
+    
+    //once search has been entered on webpage, mapClone returns all API url lengths to developer console
+    console.log(urlsLength)
   }
 
 };

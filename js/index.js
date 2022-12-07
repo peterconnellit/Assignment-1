@@ -112,7 +112,7 @@ const gamingNews = document.getElementById("gaming-news");
 const gamingDetails = document.getElementById("gaming-details");
 
 //gaming news api endpoint
-const GAMING_NEWS = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=3&apiKey=";
+const GAMING_NEWS = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
 
 //JavaScript Ajax fetch api function
 const fetchGamingNews = async () => {

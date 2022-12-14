@@ -2,7 +2,11 @@
 Would recommend securely storing API key in an environmental variable on server, hidden from users.*/
 const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
 
-//Scroll animation
+//Scroll animation object and properties
+/*Classes are used as targets sent to the “reveal()” function as arguments. 
+We can also pass objects and override the default settings of the constructor function “ScrollReveal()” for selected targets.
+ScrollReveal employs the singleton design pattern, meaning we can repeatedly call the constructor and the same instance will always be returned.
+*/
 const sr = ScrollReveal({
   origin: 'bottom',
   distance: '50px',
@@ -32,12 +36,12 @@ sr.reveal('.searchButton',{})
 const hamburgerButton = document.getElementById('hamburger')
 const navList = document.getElementById('navList')
 
-//When called, show hamburger nav menu
+//Function that, when called, uses the “classList” API’s “toggle()” function.
 function toggleButton() {
   navList.classList.toggle('show')
 }
 
-//Event listener to call Nav function upon user click
+//“addEventListener()” callback function with user “click” and the “toggleButton()” function as arguments
 hamburgerButton.addEventListener('click', toggleButton)
 
 //Variables for trending articles
@@ -48,12 +52,12 @@ const trendingDetails = document.getElementById("trendingDetails");
 let newsDataArr = [];
 
 //trending news api endpoint
-const TRENDING_NEWS = "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=";
+const trendingUrl = "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=";
 
 //JavaScript Ajax fetch api function
 const fetchTrendingNews = async () => {
   //Promise & response
-  const response = await fetch(TRENDING_NEWS + apiKey);
+  const response = await fetch(trendingUrl + apiKey);
   
   //If promise & response successful return json articles into array
   if (response.status >= 200 && response.status < 300) {
@@ -67,11 +71,11 @@ const fetchTrendingNews = async () => {
   }
   
   //Call function
-  TrendingNews();
+  trending();
 };
   
 //function to create div elements with json data
-function TrendingNews() {
+function trending() {
   trendingDetails.innerHTML = "";
 
   newsDataArr.forEach((news) => {
@@ -112,12 +116,12 @@ const gamingNews = document.getElementById("gamingNews");
 const gamingDetails = document.getElementById("gamingDetails");
 
 //gaming news api endpoint
-const GAMING_NEWS = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
+const gamingUrl = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
 
 //JavaScript Ajax fetch api function
 const fetchGamingNews = async () => {
   //Promise & response
-  const response = await fetch(GAMING_NEWS + apiKey);
+  const response = await fetch(gamingUrl + apiKey);
   
   //If promise & response successful return json articles into array
   if (response.status >= 200 && response.status < 300) {
@@ -131,11 +135,11 @@ const fetchGamingNews = async () => {
   }
   
   //Call function
-  GamingNews();
+  gaming();
 };
   
 //function to create div elements with json data
-function GamingNews() {
+function gaming() {
   gamingDetails.innerHTML = "";
 
   newsDataArr.forEach((news) => {
@@ -176,12 +180,12 @@ const newsType = document.getElementById("techNews");
 const techDetails = document.getElementById("techDetails");
 
 //Tech news api endpoint
-const TECHNOLOGY_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
+const techUrl = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
 
 //JavaScript Ajax fetch api function
 const fetchTechnologyNews = async () => {
   //Promise & response
-  const response = await fetch(TECHNOLOGY_NEWS + apiKey);
+  const response = await fetch(techUrl + apiKey);
   
   //If promise & response successful return json articles into array
   if (response.status >= 200 && response.status < 300) {
@@ -195,11 +199,11 @@ const fetchTechnologyNews = async () => {
   }
   
   //Call function
-  techNews();
+  tech();
 };
   
 //function to create div elements with json data
-function techNews() {
+function tech() {
   techDetails.innerHTML = "";
 
   newsDataArr.forEach((news) => {
@@ -240,12 +244,12 @@ const businessNews = document.getElementById("businessNews");
 const businessDetails = document.getElementById("businessDetails");
 
 //Business news api endpoint
-const BUSINESS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
+const businessUrl = "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
 
 //JavaScript Ajax fetch api function
 const fetchBusinessNews = async () => {
   //Promise & response
-  const response = await fetch(BUSINESS_NEWS + apiKey);
+  const response = await fetch(businessUrl + apiKey);
   
 
   //If promise & response successful return json articles into array
@@ -260,11 +264,11 @@ const fetchBusinessNews = async () => {
   }
   
   //Call function
-  BusinessNews();
+  business();
 };
   
 //function to create div elements with json data
-function BusinessNews() {
+function business() {
   businessDetails.innerHTML = "";
 
   newsDataArr.forEach((news) => {
@@ -314,7 +318,7 @@ window.onload = function () {
   const input = document.querySelector(".input");
   const newsList = document.querySelector(".newsList");
 
-  //listen for submit which triggers retrieve function
+  //“submit” triggers retrieve the callback function
   searchFrom.addEventListener("submit", retrieve);
 
   //Initialise function, listens for event
@@ -370,10 +374,13 @@ window.onload = function () {
         console.log(error);
       });
 
-    /*Created a clone of the map higher order function for demonstration purposes.
+    /*Created a clone of the map higher-order function for demonstration purposes.
     Here we are extracting information to developer console.
     Using an array of newsAPI urls, we can get all url lengths.
-    mapClone function takes both array and function as arguments and return url lengths*/
+    mapClone takes an array and the fn callback function as arguments.
+    The “urlList” value is used to contain the final result.
+    The callback function is used on each element while iteratively looping over the “urlList” array
+    The “urlList” array is returned with URL lengths and printed to the browser console.*/
     function mapClone(arr, fn) {
       const urlList = [];
       for(let i = 0; i < arr.length; i++) {
@@ -384,7 +391,7 @@ window.onload = function () {
       return urlList;
     }
     
-    const urls = [TRENDING_NEWS, GAMING_NEWS, TECHNOLOGY_NEWS, BUSINESS_NEWS, url];
+    const urls = [trendingUrl, gamingUrl, techUrl, businessUrl, url];
     const urlsLength = mapClone(urls, function(item) {
       return item.length;
     });

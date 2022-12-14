@@ -8,7 +8,7 @@ html {
     scroll-behavior: smooth;
 }
 
-html.sr .load-hidden {
+html.sr .loadHidden {
     visibility: hidden;
 }
 
@@ -71,14 +71,14 @@ li:hover {
     font-size: 40px;
 }
 
-.hero-area {
+.heroArea {
     display: flex;
     height: 100%;
     justify-content: space-between;
     align-items: center;
 }
 
-.hero-text {
+.heroText {
     margin-left: 80px;
     margin-bottom: 200px;
 }
@@ -92,7 +92,7 @@ a {
     text-decoration: none;
 }
 
-a#hero-button {
+a#heroButton {
     color: white;
     text-decoration: none;
 }
@@ -124,7 +124,7 @@ section {
     background-color: white;
 }
 
-.sub-section {
+.subSection {
     display: flex;
     justify-content: space-around;
     padding-top: 40px;
@@ -143,12 +143,12 @@ section {
     margin-left: 80px;
 }
 
-.coral-container {
+.coralContainer {
     display: flex;
     align-items: center;
 }
 
-.sub-section-alternative {
+.subSectionAlternative {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -157,12 +157,12 @@ section {
     padding-bottom: 80px;
 }
 
-.article-container {
+.articleContainer {
     display: flex;
     justify-content: space-around;
 }
 
-.article-card {
+.articleCard {
     width: 300px;
     height: 500px;
     box-shadow: 5px 5px 20px rgb(197, 195, 195);
@@ -172,7 +172,7 @@ section {
     display: table;
 }
 
-.article-image {
+.articleImage {
     margin-top: 25px;
     width: 250px;
     border-radius: 125px;
@@ -184,7 +184,7 @@ section {
     padding: 10px;
 }
 
-.card-title {
+.cardTitle {
     font-size: smaller;
     padding-left: 5px;
     padding-right: 5px;
@@ -195,7 +195,7 @@ h5 {
     margin: 5px;
 }
 
-.search-section {    
+.searchSection {    
     background-color: #1c1d25;
     color: white;
     text-align: center;
@@ -205,11 +205,11 @@ h5 {
     padding-bottom: 40px;
 }
 
-.section-title {    
+.sectionTitle {    
     margin-top: 3%;
 }
 
-.search-title {
+.searchTitle {
     font-size: x-large;
 }
 
@@ -235,7 +235,7 @@ legend {
     margin-right: 10px;
 }
 
-.search-button {
+.searchButton {
     font-family: 'Poppins', sans-serif;
     align-items: center;  
     font-size: 18px;
@@ -251,18 +251,18 @@ legend {
     transition: 0.5s;
 }
 
-.search-button:hover {
+.searchButton:hover {
     background-color: #f58965;    
     scale: 105%;
     color: white;   
 }
 
-.search-button:active {
+.searchButton:active {
     background-color: #A9A9A9;
     color: #808080;
 }
 
-a.result-links {
+a.resultLinks {
     color: white;
 }
 
@@ -274,7 +274,7 @@ footer {
     display: block;
 }
 
-.top-button {
+.topButton {
     margin: 10px;
     padding-bottom: 10px;
     text-decoration: underline;
@@ -283,11 +283,11 @@ footer {
     transition: 0.5s;     
 }
 
-.top-button:hover {       
+.topButton:hover {       
     scale: 110%;
 }
 
-.top-button:active {
+.topButton:active {
     color: #808080;
 }
 
@@ -304,7 +304,7 @@ hr {
     outline: 0;
 }
 
-.hero-button:hover {
+.heroButton:hover {
     color: white;
 }
 
@@ -316,13 +316,13 @@ hr {
     display: inline-block;
 }
 
-.news-list {
+.newsList {
     display: contents;
 }
 
 /* Desktop */
 @media only screen and (max-width: 1000px) {
-    .article-container {
+    .articleContainer {
         display: flex;
         flex-wrap: wrap;
     }
@@ -365,17 +365,17 @@ hr {
         height: inherit;
     }
 
-    .hero-area{
+    .heroArea{
         padding-top: 30px;
         padding-bottom: 30px;
     }
 
-    .hero-text {
+    .heroText {
         margin-left: 40px;
         margin-right: 40px;
     }
 
-    .sub-section {
+    .subSection {
         display: block;
     }
     
@@ -386,7 +386,7 @@ hr {
         width: 50%;
     }
 
-    .search-section {
+    .searchSection {
         padding-left: 5px;
         padding-right: 5px;
         justify-content: space-around;

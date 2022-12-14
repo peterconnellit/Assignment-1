@@ -12,7 +12,7 @@ const sr = ScrollReveal({
 
 //Main Page
 sr.reveal('.logo',{})
-sr.reveal('.hero-text',{ delay: 100 })
+sr.reveal('.heroText',{ delay: 100 })
 sr.reveal('.button',{ delay: 300 })
 
 //About
@@ -23,14 +23,14 @@ ScrollReveal().reveal('.tagline', { delay: 1500 })
 ScrollReveal().reveal('.punchline', { delay: 2000, interval: 500 })
 
 //Articles
-sr.reveal('.article-card',{ interval: 200 })
+sr.reveal('.articleCard',{ interval: 200 })
 
 //Contact
-sr.reveal('.search-button',{})
+sr.reveal('.searchButton',{})
 
 //Navigation switching for mobile responsiveness
 const hamburgerButton = document.getElementById('hamburger')
-const navList = document.getElementById('nav-list')
+const navList = document.getElementById('navList')
 
 //When called, show hamburger nav menu
 function toggleButton() {
@@ -41,8 +41,8 @@ function toggleButton() {
 hamburgerButton.addEventListener('click', toggleButton)
 
 //Variables for trending articles
-const trendingNews = document.getElementById("trending-news");
-const trendingDetails = document.getElementById("trending-details");
+const trendingNews = document.getElementById("trendingNews");
+const trendingDetails = document.getElementById("trendingDetails");
 
 //Array to store json fetch response
 let newsDataArr = [];
@@ -83,12 +83,12 @@ function TrendingNews() {
     
     //News heading details
     const newsHeading = document.createElement("p");
-    newsHeading.className = "card-title";
+    newsHeading.className = "cardTitle";
     newsHeading.innerHTML = news.title;
     
     //News data details
     const dateHeading = document.createElement("h5");
-    dateHeading.className = "text-primary";
+    dateHeading.className = "textPrimary";
     dateHeading.innerHTML = date[0];
     
     //a href link to news websites
@@ -108,8 +108,8 @@ function TrendingNews() {
 }
 
 //Variables for gaming articles
-const gamingNews = document.getElementById("gaming-news");
-const gamingDetails = document.getElementById("gaming-details");
+const gamingNews = document.getElementById("gamingNews");
+const gamingDetails = document.getElementById("gamingDetails");
 
 //gaming news api endpoint
 const GAMING_NEWS = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
@@ -147,12 +147,12 @@ function GamingNews() {
     
     //News heading details
     const newsHeading = document.createElement("p");
-    newsHeading.className = "card-title";
+    newsHeading.className = "cardTitle";
     newsHeading.innerHTML = news.title;
     
     //News data details
     const dateHeading = document.createElement("h5");
-    dateHeading.className = "text-primary";
+    dateHeading.className = "textPrimary";
     dateHeading.innerHTML = date[0];
     
     //a href link to news websites
@@ -172,8 +172,8 @@ function GamingNews() {
 }
   
 //Variables for tech articles
-const newsType = document.getElementById("tech-news");
-const techDetails = document.getElementById("tech-details");
+const newsType = document.getElementById("techNews");
+const techDetails = document.getElementById("techDetails");
 
 //Tech news api endpoint
 const TECHNOLOGY_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
@@ -211,12 +211,12 @@ function techNews() {
     
     //News heading details
     const newsHeading = document.createElement("p");
-    newsHeading.className = "card-title";
+    newsHeading.className = "cardTitle";
     newsHeading.innerHTML = news.title;
     
     //News data details
     const dateHeading = document.createElement("h5");
-    dateHeading.className = "text-primary";
+    dateHeading.className = "textPrimary";
     dateHeading.innerHTML = date[0];
     
     //a href link to news websites
@@ -236,8 +236,8 @@ function techNews() {
 }
 
 //Variables for business articles
-const businessNews = document.getElementById("business-news");
-const businessDetails = document.getElementById("business-details");
+const businessNews = document.getElementById("businessNews");
+const businessDetails = document.getElementById("businessDetails");
 
 //Business news api endpoint
 const BUSINESS_NEWS = "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
@@ -276,12 +276,12 @@ function BusinessNews() {
     
     //News heading details
     const newsHeading = document.createElement("p");
-    newsHeading.className = "card-title";
+    newsHeading.className = "cardTitle";
     newsHeading.innerHTML = news.title;
     
     //News data details
     const dateHeading = document.createElement("h5");
-    dateHeading.className = "text-primary";
+    dateHeading.className = "textPrimary";
     dateHeading.innerHTML = date[0];
     
     //a href link to news websites
@@ -310,9 +310,9 @@ window.onload = function () {
   fetchBusinessNews();
  
   //Declare selectors to retrieve user input and from form and append results to news list
-  const searchFrom = document.querySelector(".search-form");
+  const searchFrom = document.querySelector(".searchForm");
   const input = document.querySelector(".input");
-  const newsList = document.querySelector(".news-list");
+  const newsList = document.querySelector(".newsList");
 
   //listen for submit which triggers retrieve function
   searchFrom.addEventListener("submit", retrieve);
@@ -352,7 +352,7 @@ window.onload = function () {
         data.articles.forEach((article) => {
           let li = document.createElement("li");
           let a = document.createElement("a");
-          a.className = "result-links";
+          a.className = "resultLinks";
           //Set list a tag attribute to URL
           a.setAttribute("href", article.url);
           //Prevent page from directing user away

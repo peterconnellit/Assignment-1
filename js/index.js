@@ -44,18 +44,16 @@ function toggleButton() {
 //“addEventListener()” callback function with user “click” and the “toggleButton()” function as arguments
 hamburgerButton.addEventListener('click', toggleButton)
 
-//Variables for trending articles
-const trendingNews = document.getElementById("trendingNews");
-const trendingDetails = document.getElementById("trendingDetails");
-
-//Array to store json fetch response
-let newsDataArr = [];
-
-//trending news api endpoint
-const trendingUrl = "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=";
-
 //JavaScript Ajax fetch api function
 const fetchTrendingNews = async () => {
+
+  //Variables for trending articles
+  const trendingNews = document.getElementById("trendingNews");
+  const trendingDetails = document.getElementById("trendingDetails");
+
+  //trending news api endpoint
+  const trendingUrl = "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=";
+
   //Promise & response
   const response = await fetch(trendingUrl + apiKey);
   
@@ -111,15 +109,16 @@ function trending() {
   });
 }
 
-//Variables for gaming articles
-const gamingNews = document.getElementById("gamingNews");
-const gamingDetails = document.getElementById("gamingDetails");
-
-//gaming news api endpoint
-const gamingUrl = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
-
 //JavaScript Ajax fetch api function
 const fetchGamingNews = async () => {
+
+  //Variables for gaming articles
+  const gamingNews = document.getElementById("gamingNews");
+  const gamingDetails = document.getElementById("gamingDetails");
+
+  //gaming news api endpoint
+  const gamingUrl = "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=";
+
   //Promise & response
   const response = await fetch(gamingUrl + apiKey);
   
@@ -175,15 +174,16 @@ function gaming() {
   });
 }
   
-//Variables for tech articles
-const newsType = document.getElementById("techNews");
-const techDetails = document.getElementById("techDetails");
-
-//Tech news api endpoint
-const techUrl = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
-
 //JavaScript Ajax fetch api function
 const fetchTechnologyNews = async () => {
+
+  //Variables for tech articles
+  const techNews = document.getElementById("techNews");
+  const techDetails = document.getElementById("techDetails");
+
+  //Tech news api endpoint
+  const techUrl = "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=";
+
   //Promise & response
   const response = await fetch(techUrl + apiKey);
   
@@ -239,19 +239,19 @@ function tech() {
   });
 }
 
-//Variables for business articles
-const businessNews = document.getElementById("businessNews");
-const businessDetails = document.getElementById("businessDetails");
-
-//Business news api endpoint
-const businessUrl = "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
-
 //JavaScript Ajax fetch api function
 const fetchBusinessNews = async () => {
+  
+  //Variables for business articles
+  const businessNews = document.getElementById("businessNews");
+  const businessDetails = document.getElementById("businessDetails");
+
+  //Business news api endpoint
+  const businessUrl = "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=";
+
   //Promise & response
   const response = await fetch(businessUrl + apiKey);
   
-
   //If promise & response successful return json articles into array
   if (response.status >= 200 && response.status < 300) {
     const myJson = await response.json();
@@ -306,8 +306,7 @@ function business() {
   
 //Initiate on page load
 window.onload = function () {
-  newsType.innerHTML = "";
-
+  
   fetchTrendingNews();
   fetchGamingNews();
   fetchTechnologyNews();
@@ -352,7 +351,7 @@ window.onload = function () {
         //Get data and show response on console
         console.log(data);
 
-        //Callback function to create new list element and anchor tag
+        //Callback function to create new list element and anchor tag, different output then other fetches
         data.articles.forEach((article) => {
           let li = document.createElement("li");
           let a = document.createElement("a");
@@ -392,12 +391,42 @@ window.onload = function () {
     }
     
     const urls = [trendingUrl, gamingUrl, techUrl, businessUrl, url];
+
     const urlsLength = mapClone(urls, function(item) {
       return item.length;
     });
-    
     //once search has been entered on webpage, mapClone returns all API url lengths to developer console
     console.log(urlsLength)
   }
 
 };
+
+
+//TEST CODE BELOW IS WORK IN PROGRESS INTENDED TO REPLACE THE MULTIPLE FETCHES SYNC AWAIT FETCHES
+
+
+/*Here is how I would refactor multiple fetch functions into one.
+The output prints to console as I have not yet solved a function to append data to website*/
+const fetchData = async () => {
+
+  //Moved variable from global scope
+  const apiKey = "93fa9c4c03804d35b9a4178db6eb4808";
+  
+    const urls = [
+      "https://newsapi.org/v2/top-headlines?country=gb&category=general&pageSize=2&apiKey=" + apiKey,
+      "https://newsapi.org/v2/everything?q=gaming&language=en&pageSize=2&apiKey=" + apiKey,
+      "https://newsapi.org/v2/top-headlines?country=in&category=technology&pageSize=2&apiKey=" + apiKey,
+      "https://newsapi.org/v2/top-headlines?country=in&category=business&pageSize=2&apiKey=" + apiKey,
+    ]
+    
+    try {
+      const response = await Promise.all(
+        urls.map(url => fetch(url).then(res => res.json()))
+      )
+      console.log(response)    
+    } catch (error) {
+      console.log("Error", error)
+    }
+  }
+
+  fetchData()
